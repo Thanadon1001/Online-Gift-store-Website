@@ -44,77 +44,194 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เข้าสู่ระบบ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>StyleSwap - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(to right, #e4cca2, #eeb98b);
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #faf7f2;
+        background-image: 
+            radial-gradient(at 90% 10%, rgba(0, 0, 0, 0.03) 0px, transparent 50%),
+            radial-gradient(at 10% 90%, rgba(0, 0, 0, 0.02) 0px, transparent 50%);
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .card {
+        background: rgba(255, 253, 250, 0.95);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.08),
+            0 1px 3px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .card-title {
+        font-size: 28px;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-align: center;
+        margin-bottom: 35px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .card-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #1a1a1a;
+        border-radius: 2px;
+    }
+
+    .input-field {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    .input-field input {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: white;
+        color: #1a1a1a;
+    }
+
+    .input-field input:focus {
+        border-color: #1a1a1a;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .input-field .material-icons {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        transition: all 0.3s ease;
+    }
+
+    .input-field input:focus + .material-icons {
+        color: #1a1a1a;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .error-message {
+        background: #fff3f3;
+        color: #e74c3c;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        text-align: center;
+        border: 1px solid #ffd1d1;
+    }
+
+    @media (max-width: 480px) {
         .card {
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px 20px;
         }
+
         .card-title {
             font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
         }
-        .btn {
-            width: 100%;
-            margin-top: 20px;
-            background-color: #000;
+
+        .input-field input {
+            padding: 12px 12px 12px 40px;
         }
-        .error-message {
-            color: #d32f2f;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .input-field .prefix {
-            color: #666;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col s12 m6 offset-m3">
-                <div class="card">
-                    <div class="card-content">
-                        <h4 class="card-title">เข้าสู่ระบบ</h4>
-                        <?php if (isset($error)): ?>
-                            <div class="error-message"><?php echo $error; ?></div>
-                        <?php endif; ?>
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                            <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="username" name="username" type="text" required>
-                                <label for="username">ชื่อผู้ใช้</label>
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons prefix">lock</i>
-                                <input id="password" name="password" type="password" required>
-                                <label for="password">รหัสผ่าน</label>
-                            </div>
-                            <button type="submit" class="btn waves-effect waves-light">
-                                เข้าสู่ระบบ
-                                <i class="material-icons right">send</i>
-                            </button>
-                        </form>
-                    </div>
+        <div class="card">
+            <h4 class="card-title">Welcome Back</h4>
+            <?php if (isset($error)): ?>
+                <div class="error-message">
+                    <i class="material-icons" style="font-size: 16px; vertical-align: text-bottom;">error_outline</i>
+                    <?php echo $error; ?>
                 </div>
-            </div>
+            <?php endif; ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="input-field">
+                    <input id="username" name="username" type="text" placeholder="Username" required>
+                    <i class="material-icons">account_circle</i>
+                </div>
+                <div class="input-field">
+                    <input id="password" name="password" type="password" placeholder="Password" required>
+                    <i class="material-icons">lock</i>
+                </div>
+                <button type="submit" class="btn">
+                    Sign In
+                    <i class="material-icons">arrow_forward</i>
+                </button>
+            </form>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Add focus effects for better UX
+        document.querySelectorAll('.input-field input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.previousElementSibling?.classList.add('active');
+            });
+            input.addEventListener('blur', () => {
+                if (!input.value) {
+                    input.previousElementSibling?.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -33,38 +33,48 @@ try {
         END $$;
     ";
 
-    // Create Goods table (unchanged)
+    // Create enhanced Goods table with pricing
     $sql_goods = "
         CREATE TABLE IF NOT EXISTS goods (
             goods_id SERIAL PRIMARY KEY,
-            goods_name VARCHAR(100) NOT NULL
+            goods_name VARCHAR(100) NOT NULL,
+            description TEXT,
+            image_path VARCHAR(255),
+            price_1_day DECIMAL(10,2) NOT NULL,
+            price_3_day DECIMAL(10,2) NOT NULL,
+            price_7_day DECIMAL(10,2) NOT NULL,
+            category VARCHAR(50),
+            size_info VARCHAR(100),
+            availability_status BOOLEAN DEFAULT true
         )";
-
-    // Create Pricing table (unchanged)
-    $sql_pricing = "
-        CREATE TABLE IF NOT EXISTS pricing (
-            pricing_id SERIAL PRIMARY KEY,
-            goods_id INT REFERENCES goods(goods_id) ON DELETE CASCADE,
-            rent_days INT CHECK (rent_days IN (1, 3, 7)),
-            price DECIMAL(10,2) NOT NULL
-        )";
-
     // Create Rentals table (unchanged)
+   // ...existing code...
+
+    // Create enhanced Rentals table
     $sql_rentals = "
         CREATE TABLE IF NOT EXISTS rentals (
             rental_id SERIAL PRIMARY KEY,
             user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
             goods_id INT REFERENCES goods(goods_id) ON DELETE CASCADE,
             rent_days INT CHECK (rent_days IN (1, 3, 7)),
-            total_cost DECIMAL(10,2),
-            rental_date DATE NOT NULL DEFAULT CURRENT_DATE
+            rental_date DATE NOT NULL DEFAULT CURRENT_DATE,
+            total_cost DECIMAL(10,2) NOT NULL,
+            deposit_amount DECIMAL(10,2),
+            notes TEXT
         )";
 
     // Execute the table creation queries
     $conn->exec($sql_users);
     $conn->exec($sql_add_password);
     $conn->exec($sql_goods);
-    $conn->exec($sql_pricing);
+    $conn->exec($sql_rentals);  // Removed $sql_pricing since it's merged with goods
+
+    echo "Database tables created/updated successfully";
+
+    // Execute the table creation queries
+    $conn->exec($sql_users);
+    $conn->exec($sql_add_password);
+    $conn->exec($sql_goods);
     $conn->exec($sql_rentals);
 
     echo "Database tables created/updated successfully";
