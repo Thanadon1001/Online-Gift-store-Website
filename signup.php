@@ -33,7 +33,7 @@ $uerror=$fname=$lname=$phone=$email="";
 <!DOCTYPE html>
 <html>
    <head>
-      <title>GiftStore</title>
+      <title>StyleSwap</title>
       <meta name="viewport" content="width=device-width, initial-scale=1"> 
       <!-- FONTS      -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
@@ -105,18 +105,17 @@ $uerror=$fname=$lname=$phone=$email="";
       <div class="row navbar-fixed">
          <nav class="black">
             <div class="nav-wrapper">
-               <a href="#" class="brand-logo">GiftStore</a>
+               <a href="#" class="brand-logo">StyleSwap</a>
                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                <ul id="categories1" class="dropdown-content" databeloworigin="true">
-                  <li><a href="category1.php" class="dropdown_link">Kids</a></li>
-                  <li><a href="category2.php" class="dropdown_link">PhoneCase</a></li>
-                  <li class="divider"></li>
-                  <li><a href="category3.php" class="dropdown_link">Home Decor</a></li>
-                  <li><a href="category4.php" class="dropdown_link">Watches</a></li>
-                  <li><a href="category5.php" class="dropdown_link">Jewellery</a></li>
-                  <li><a href="category6.php" class="dropdown_link">Soft Toys</a></li>
-                  <li><a href="category7.php" class="dropdown_link">Crockery</a></li>
-                  <li><a href="category8.php" class="dropdown_link">Wallet</a></li>
+               <li><a class="dropdown_link">Popular Rental</a></li>
+                  <li><a class="dropdown_link">Bags</a></li>
+                  <li><a class="dropdown_link">Pants</a></li>
+                  <li><a class="dropdown_link">Shirts</a></li>
+                  <li><a class="dropdown_link">Shoes</a></li>
+                  <li><a class="dropdown_link">Accessories</a></li>
+                  <li><a class="dropdown_link">Dresses</a></li>
+                  <li><a class="dropdown_link">Crops</a></li>
 
                </ul>
                <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -127,8 +126,6 @@ $uerror=$fname=$lname=$phone=$email="";
                     ?>
                           <li><a href="index.php" class="navlink">Home</a></li>
                           <li><a href="#" class="dropdown-trigger navlink" data-activates="categories1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-                          <li><a href="aboutus.php" class="navlink">About Us</a></li>
-                          <li><a href="contactus.php" class="navlink">Contact Us</a></li>
                           <li><a class="dropdown-button" data-beloworigin="true" href="#!" data-activates="dropdown2"><?php echo $_SESSION['userid']?><i class="material-icons right">arrow_drop_down</i></a></li>
                           <li><a href="shopping_cart.php" class="navlink"><i class="material-icons">shopping_cart</i></a></li>
                   <ul id="dropdown2" class="dropdown-content dropdown_link">
@@ -140,9 +137,7 @@ $uerror=$fname=$lname=$phone=$email="";
                   ?>
                   <li><a href="index.php" class="navlink">Home</a></li>
                   <li><a href="#" class="dropdown-trigger navlink" data-activates="categories1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-                  <li><a href="aboutus.php" class="navlink">About Us</a></li>
-                  <li><a href="contactus.php" class="navlink">Contact Us</a></li>
-                  <li><a href="signup.php" class="navlink">Sign Up</a></li>
+                  <li><a href="Login.php" class="navlink">Login</a></li>
                   <li><a href="shopping_cart.php" class="navlink"><i class="material-icons">shopping_cart</i></a></li> 
                   <?php
                   }
@@ -150,7 +145,7 @@ $uerror=$fname=$lname=$phone=$email="";
                 </form> 
                </ul>
                <ul class="side-nav" id="mobile-demo">
-                <li><a href="index.php" class="side_logo left-align">GiftStore</a></li>
+                <li><a href="index.php" class="side_logo left-align">StyleSwap</a></li>
                 <hr>
                 <li><a href="index.php" class="side_nav">Home</a></li>
                 <li><a href="aboutus.php" class="side_nav">About Us</a></li>
@@ -259,9 +254,7 @@ $uerror=$fname=$lname=$phone=$email="";
             </div>
              <div class="row center-align">
                 <div class="col s12 m12 l12">
-                    <a href="index.php" class="link">Home<span class="white-text"> |</span></a> 
-                    <a href="aboutus.php" class="link">About Us<span class="white-text"> |</span></a> 
-                     <a href="ContactUs.html" class="link">Contact Us<span class="white-text"> |</span></a> 
+                    <a href="index.php" class="link">Home</a>
                   </div>
               </div> 
               <div class="row center-align">

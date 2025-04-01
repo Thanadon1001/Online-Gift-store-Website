@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment - Clothing Rental</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+body {
+font-family: 'Prompt', sans-serif;
+background: linear-gradient(120deg, #fef6e4, #fae1dd);
+margin: 0;
+padding: 20px;
+}
+.container {
+max-width: 450px;
+background: white;
+padding: 25px;
+border-radius: 12px;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+margin: auto;
+}
+h2 {
+text-align: center;
+color: #d77a61;
+}
+.package {
+display: flex;
+justify-content: space-between;
+padding: 10px 0;
+border-bottom: 1px solid #ddd;
+cursor: pointer;
+transition: 0.3s;
+}
+.package:hover, .selected {
+background: #ffe1d6;
+}
+.total {
+font-size: 18px;
+font-weight: bold;
+text-align: right;
+margin-top: 10px;
+color: #d77a61;
+}
+.payment-method {
+margin-top: 20px;
+}
+.payment-option {
+display: flex;
+align-items: center;
+padding: 10px;
+background: #fff0eb;
+border-radius: 8px;
+margin-bottom: 10px;
+cursor: pointer;
+transition: 0.3s;
+}
+.payment-option:hover, .selected-payment {
+background: #ffe1d6;
+}
+input[type="radio"] {
+margin-right: 10px;
+}
+.btn {
+background: #d77a61;
+color: white;
+border: none;
+padding: 12px;
+width: 100%;
+font-size: 16px;
+cursor: pointer;
+border-radius: 8px;
+margin-top: 15px;
+font-weight: bold;
+transition: 0.3s;
+}
+.btn:hover {
+background: #bf5f45;
+}
+.hidden {
+display: none;
+}
+.qr-code {
+text-align: center;
+margin-top: 10px;
+}
+.qr-code img {
+width: 150px;
+border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2><i class="fas fa-shopping-cart"></i> Payment</h2>
+
+<!-- Select Rental Package -->
+<h3>Select Rental Package (+50 Shipping Fee)</h3>
+<div class="package" onclick="selectPackage(1, 250, this)">1 Day - 250 THB</div>
+<div class="package" onclick="selectPackage(3, 599, this)">3 Days - 599 THB</div>
+<div class="package" onclick="selectPackage(7, 999, this)">7 Days - 999 THB</div>
+
+<!-- Display Total Price -->
+<div class="total">Total Price: <span id="total-price">0</span> THB</div>
+
+<!-- Payment Method -->
+<div class="payment-method">
+<h3>Select Payment Method</h3>
+<div class="payment-option" onclick="togglePayment('credit', this)">
+<input type="radio" name="payment" id="credit-card">
+<i class="fas fa-credit-card"></i>
+<label for="credit-card">Credit/Debit Card</label>
+</div>
+<div class="payment-option" onclick="togglePayment('qr', this)">
+<input type="radio" name="payment" id="qr-code">
+<i class="fas fa-qrcode"></i>
+<label for="qr-code">Pay via QR Code</label>
+</div>
+
+<!-- Credit Card Form -->
+<div id="credit-form" class="hidden">
+<h4>Credit Card Information</h4>
+<input type="text" class="input-field" placeholder="Card Number">
+<input type="text" class="input-field" placeholder="Cardholder Name">
+<div style="display: flex; gap: 10px;">
+<input type="text" class="input-field" placeholder="MM/YY" style="flex: 1;">
+<input type="text" class="input-field" placeholder="CVV" style="flex: 1;">
+</div>
+</div>
+
+<!-- QR Code Payment -->
+<div id="qr-code-form" class="hidden qr-code">
+<h4>Scan to Pay</h4>
+<img src="https://via.placeholder.com/150" alt="QR Code">
+</div>
+
+<!-- Confirm Payment Button -->
+<button class="btn" onclick="goToThankYou()">✅ Confirm Payment</button>
+</div>
+</div>
+
+<script>
+let selectedPrice = 0;
+let selectedPackage = null;
+let selectedPayment = null;
+const shippingFee = 50;
+
+function selectPackage(days, price, element) {
+selectedPrice = price;
+document.getElementById("total-price").textContent = selectedPrice + shippingFee;
+
+// Highlight selected package
+if (selectedPackage) selectedPackage.classList.remove("selected");
+element.classList.add("selected");
+selectedPackage = element;
+}
+
+function togglePayment(method, element) {
+document.getElementById('credit-form').classList.toggle('hidden', method !== 'credit');
+document.getElementById('qr-code-form').classList.toggle('hidden', method !== 'qr');
+
+// Highlight selected payment method
+if (selectedPayment) selectedPayment.classList.remove("selected-payment");
+element.classList.add("selected-payment");
+selectedPayment = element;
+}
+
+function goToThankYou() {
+if (!selectedPackage) {
+alert("❌ Please select a rental package before proceeding.");
+return;
+}
+if (!selectedPayment) {
+alert("❌ Please select a payment method before proceeding.");
+return;
+}
+window.location.href = "type.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rental Store</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="new.css" />
+    <link rel="stylesheet" href="./newMobile.css">
+    <link rel="stylesheet" href="books.css">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-store fa-2x mx-3"></i>StyleSwap</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-right text-light"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.php">HOME
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <div class="dropdown">
+                                <a href="#" class="nav-link">Categories</a>
+                                <div class="dropdown-content">
+                                    <a href="#">Bags</a>
+                                    <a href="#">Pants</a>
+                                    <a href="#">Shirts</a>
+                                    <a href="#">Shoes</a>
+                                    <a href="#">Accessories</a>
+                                    <a href="#">Dresses</a>
+                                    <a href="#">Crops</a>
+                                </div>
+                            </div>
+                        </li>
+                
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header> 
+    <div class="m-3 p-3" style="border: 0.5px solid black;">
+        <h1 class="p-3">Popular Rentals</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/รองเท้าสีครีมลุคหวานประดับมุก.jpg" style="height: 25rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">รองเท้าสีครีมลุคหวานประดับมุก</h5>
+                        <p>✨ เพิ่มความน่ารักให้ลุคของคุณด้วยรองเท้าสีครีมสุดหวาน!
+                            ✨ ดีไซน์โบว์น่ารัก พร้อมสายประดับมุก เพิ่มความหรูหรา
+                            ✨ ใส่สบาย เดินง่าย แมตช์กับชุดไหนก็ดูดี
+                            ✨ size 37 EU
+
+                            
+                            💰 ราคาเต็ม: 1,500++บาท</p>
+                        <p>200 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+    <!-- ใส่โค้ด JavaScript ที่นี่ -->
+    <script>
+    function toggleStar() {
+    // เปลี่ยนสถานะของปุ่มเมื่อคลิก
+    var starBtn = document.getElementById('star-btn');
+    if (starBtn.innerText === '★') {
+    starBtn.innerText = '⭐'; // เปลี่ยนจากดาวว่างเป็นดาวเต็ม
+    alert('Item added to your wishlist!'); // แสดงข้อความเมื่อเพิ่ม
+    } else {
+    starBtn.innerText = '★'; // เปลี่ยนกลับเมื่อคลิกอีกครั้ง
+    alert('Item removed from your wishlist!');
+    }
+    }
+    </script>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กระเป๋าออกงาน ลุคสุดปัง ใครเห็นต้องมอง!!.jpg" style="height: 25rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กระเป๋าสุดเอ็กซ์คลูซีฟ</h5>
+                        <p>กระเป๋าออกงาน ลุคสุดปัง ใครเห็นต้องมอง!!
+                            ราคาเต็ม2,500</p>
+                        <p>650 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay2.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กางเกงยุค Y2K ดีไซน์สายรัดสุดเท่.jpg" style="height: 32rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กางเกงยุค Y2K ดีไซน์สายรัดสุดเท่</h5>
+                        <p>⚡ ล้ำสุด! สไตล์แฟชั่นยุค 2000s ที่กำลังมาแรง
+                            🔗 ดีไซน์สายรัดรอบตัว เพิ่มความดิบเท่ ให้ลุคสตรีทสุดเฟียร์ส
+                            🔥 แมตช์กับเสื้อครอป หรือแจ็กเก็ตเท่ๆ ได้ลุคสุดคูล
+                            ✨ เอว 27-29 นิ้ว สะโพก 37-39 นิ้ว
+
+                            💰 ราคาเต็ม 2,500++ บาท</p>
+                        <p>450 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay3.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 1px solid black;">
+        <h1 class="p-3">Popular Rentals</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กางเกงยีนส์สายแฟ ดีไซน์สายรัดสีรุ้ง.jpg" style="height: 40rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กางเกงยีนส์สายแฟ ดีไซน์สายรัดสีรุ้ง</h5>
+                        <p>สุดจัดสายแฟ! กางเกงดีไซน์เก๋ที่ใครเห็นก็ต้องเหลียว
+                            รายละเอียดสายรัดสีรุ้งสุดแซ่บ เพิ่มความโดดเด่นให้ลุค
+                            ใส่แล้วปัง! แมตช์กับอะไรก็ดูเฟียร์ส
+                            ✨ เอว 35-36 นิ้ว สะโพก 44 นิ้ว
+                            💰 ราคาเต็ม 2,000++ บาท
+                            </p>
+                        <p>400 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay4.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เเบรนด์ Giang Donna.jpg"style="height: 36rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เดรส Giang Donna</h5>
+                        <p>เเบรนด์ Giang Donna เเบรนด์นำเข้าเวียดนาม ✨ อก 32-34 นิ้ว สะโพก 36-37 นิ้ว ราคาเต็ม1,800++
+                            </p>
+                        <p>350 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay5.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กั๊ก.jpg"style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เสื้อกั๊กสีขาว</h5>
+                        <p> เรียบหรูใส่ออกงาน ใส่ไปเที่ยวเก๋ๆ แบรนด์ The Park
+                            size M (27-28)
+                            ราคาเต็ม 950฿
+                           </p>
+                        <p>200 baht/day </p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay6.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 0.5px solid black;">
+        <h1 class="p-3">Best Discounts</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เชิ้ตแขนสั้น.jpg" style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เสื้อเชิ้ตแขนสั้น</h5>
+                        <p>เสื้อเชิ้ตแขนสั้นดีไซน์มินิมอลสีเอิร์ธโทน ทรงโอเวอร์ไซซ์เล็กน้อย ให้ลุคสบาย ๆ แต่ดูมีสไตล์ แบรนด์ Lieu Homme
+                            ✨ อก 32-34 นิ้ว 
+                            ราคาเต็ม 790฿</p>
+                        <p>150 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay7.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เชิ้ตสุดเก๋.jpg"style="height: 32rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เสื้อเชิ้ตเกาะอก</h5>
+                        <p>เสื้อเชิ้ตดีไซน์เกาะอกสุดเก๋ ผสานความเรียบร้อยกับความสดใส ลายผ้าต่อพาสเทลให้กลิ่นอายวินเทจ
+                            ✨ อก 30-32 นิ้ว 
+                            ราคาเต็ม 890฿
+                            </p>
+                        <p>280 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay8.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กระเป๋าผีเสื้อ.jpg" style="height: 32rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กระเป๋าผีเสื้อ</h5>
+                        <p>กระเป๋าผีเสื้อ ตอนนี้เทรนผีเสื้อกำลังมา ต้องจัด
+                            ราคาเต็ม550</p>
+                        <p>100 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay9.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 0.5px solid black;">
+        <h1 class="p-3">Bags</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\หมีขนปุย.jpg" style="height: 32rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">น้องหมีขนปุย</h5>
+                        <p>กระเป๋าน้องหมีเเบรนด์ig สุดน่ารัก
+                            ราคาเต็ม1,900</p>
+                        <p>380 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay10.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กระเป๋าคล้องเเขนสีพลาสเทลพร้อมของตกเเต่งกุ๊กกิ๊ก.jpg" style="height: 32rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">คล้องแขนสีขาวลูกคุณ</h5>
+                        <p>กระเป๋าคล้องเเขนสีพลาสเทลพร้อมของตกเเต่งกุ๊กกิ๊ก
+                            ราคาเต็ม1,800</p>
+                        <p>320 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay11.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กระเป๋าสุดเท่สำหรับคนพร้อมลุย.jpg" style="height: 32rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">ลุคเท่ สายลุย</h5>
+                        <p>กระเป๋าสุดเท่สำหรับคนพร้อมลุย 
+                            เเต่งง่าย ใส่กับชุดไหนก็เท่
+                            ราคาเต็ม990</p>
+                        <p>200 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay12.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 1px solid black;">
+        <h1 class="p-3">Pants</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กางเกงยีนส์ดีไซน์เก๋ หายากสุดๆ มีช่องเว้าสุดชิค.jpg" style="height: 40rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กางเกงยีนส์สายแฟชั่น</h5>
+                        <p>กางเกงยีนส์ดีไซน์เก๋ หายากสุดๆ มีช่องเว้าสุดชิค! 
+
+                            🔥 กางเกงยีนส์สุดล้ำ ดีไซน์โดดเด่น ไม่ซ้ำใคร
+                            🔥 แมตช์กับเสื้อเรียบๆ ก็ปัง ดูแฟชั่นสุดๆ
+                            🔥 เนื้อผ้าดี ใส่สบาย ให้ลุคที่แซ่บและทันสมัย
+                            ✨ เอว 28 นิ้ว สะโพก 36 นิ้ว
+                            
+                            💰 ราคาเต็ม: 1,000++ บาท</p>
+                        <p>250 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay13.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กางเกงลายเห็ดวินเทจสุดคิ้วท์.jpg" style="height: 40rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กางเกงลายเห็ดวินเทจสุดคิ้วท์</h5>
+                        <p> 🌿 เพิ่มความสดใสให้ลุคของคุณด้วยกางเกงขากว้างลายเห็ดสุดน่ารัก
+                            🌿 ดีไซน์วินเทจ ใส่สบาย เหมาะกับทุกโอกาส
+                            🌿 แมตช์ง่ายกับเสื้อเรียบๆ ก็ดูมีสไตล์
+                            ✨ เอว 32-34 นิ้ว สะโพก 36-37 นิ้ว
+                            💰 ราคาเต็ม 1,200++ บาท</p>
+                        <p>300 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay14.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กางเกงยีนส์แหวกข้างดีไซน์สปอร์ต.jpg" style="height: 40rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กางเกงยีนส์แหวกข้างดีไซน์สปอร์ต</h5>
+                        <p> 🔥 เท่ เปรี้ยว มีสไตล์แบบสปอร์ตลุค
+                            🔥 ดีไซน์แหวกข้างพร้อมกระดุม ปรับแต่งความแซ่บได้
+                            🔥 ใส่คู่กับsneakers หรือส้นสูงก็ปัง!
+                            ✨ เอว 34 นิ้ว สะโพก 38 นิ้ว
+                            💰 ราคาเต็ม 1,500++ บาท</p>
+                        <p>350 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay15.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 0.5px solid black;">
+        <h1 class="p-3">Shirts</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เสื้อสุดชิค.jpg" style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เสื้อสุดชิค</h5>
+                        <p>เสื้อแขนยาว ผ้านุ่มใส่สบาย แบรนด์ Unoffcall 
+                            ✨ อก 40-42 นิ้ว 
+                            
+                            ราคาเต็ม 1,099฿</p>
+                        <p>250 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay16.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เกาะอก.jpg" style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เกาะอกสายแฟชั่น</h5>
+                        <p>เสื้อเกาะอกสีขาว มาพร้อมเนกไทในตัว แบรนด์ Barely
+                            ✨ อก 32-34 นิ้ว 
+
+                            ราคาเต็ม 790฿</p>
+                        <p>250 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay17.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\แจ็คกเกต.jpg" style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">แจ็กเก็ตผ้าทวีต</h5>
+                        <p>แจ็กเก็ตผ้าทวีตสีแดงสุดหรู ดีไซน์กระดุมสองแถวเพิ่มความคลาสสิก ดูแพงและมีสไตล์ แมตช์ง่าย ให้ลุคเรียบหรู แบรนด์Tweed Royale
+                            ✨ อก 36-38 นิ้ว 
+
+                            ราคาเต็ม 1190฿</p>
+                        <p>290 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay18.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 1px solid black;">
+        <h1 class="p-3">Shoes</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\ลุควินเทจสุดเท่!.jpg" style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">รองเท้าหนังวินเทจ</h5>
+                        <p>ลุควินเทจสุดเท่! ใส่แล้วดูดี มีสไตล์ แมทช์ง่ายกับทุกชุด ราคาเต็ม : 1,500++ บาท</p>
+                           ✨ size 36-37 EU
+
+                        <p>200 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay19.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\บูทดำ.jpg" style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">รองเท้าบูทกันน้ำขนเฟอร์</h5>
+                        <p>ลุคสวยหรูพร้อมลุย บูทกันน้ำขนเฟอร์ ใส่อุ่น กันฝน ใส่ไปเที่ยวต่างประเทศได้! แมทช์ได้ทั้งเท่และหวาน ราคาเต็ม : 2,000++ บาท (คืนมัดจำให้เต็มเมื่อส่งคืนในสภาพเดิม)</p>
+                           ✨ size 35-36 EU
+
+                        <p>300 baht/day </p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay20.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\ดุจเจ้าหญิง.jpg" style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">ส้นสูงสุดหรู</h5>
+                        <p>เปล่งประกายดุจเจ้าหญิง ส้นสูงสีขาวสุดหรู พร้อมดีเทลโบว์ฟรุ้งฟริ้ง ใส่ออกงาน ถ่ายรูปสวยทุกมุม! ราคาเต็ม : 2,500++ บาท (คืนเต็มเมื่อส่งคืนในสภาพเดิม)(คุ้มสุด ๆ 🔥)</p>
+                           ✨ size 34-35 EU
+
+                        <p>350 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay21.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 0.5px solid black;">
+        <h1 class="p-3">Accessories</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\นาฬิกา Vivienne Westwood.jpg" style="height: 28rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">นาฬิกา Vivienne Westwood</h5>
+                        <p>Vivienne Westwood 
+                            หน้าปัด 28mm 
+                            ราคาเต็ม 8,500++</p>
+                        <p>850 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay22.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\สร้อยเเบรนด์ Gemin.studio.jpg" style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">สร้อยเเบรนด์ Gemin.studio </h5>
+                        <p>Gemin.studio 
+                            ราคาเต็ม 1,290</p>
+                        <p>150 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay23.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\ต่างหู Gemin.studio.jpg" style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">ต่างหู Gemin.studio </h5>
+                        <p>Gemin.studio 
+                            ราคาเต็ม 890</p>
+                        <p>120 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay24.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 1px solid black;">
+        <h1 class="p-3">Accessories</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กำไล lilith_th.jpg" style="height: 27rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กำไล lilith_th</h5>
+                        <p>lilith_th
+                            ราคาเต็ม 1,950</p>
+                        <p>380 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay25.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\แหวน lilith_th.jpg" style="height: 27rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">แหวน lilith_th</h5>
+                        <p>lilith_th
+                            ราคาเต็ม 900</p>
+                        <p>150 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay26.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เข็มขัด beltbelt_belt.jpg" style="height: 27rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เข็มขัด beltbelt_belt</h5>
+                        <p>beltbelt_belt
+                            ราคาเต็ม 550</p>
+                        <p>100 baht/day </p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay27.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 0.5px solid black;">
+        <h1 class="p-3">Dresses</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เดรสขาว.jpg" style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">White Dress</h5>
+                        <p>เบรนด์ sohyna bijou เเบรนด์นำเข้าเวียดนาม ราคาเต็ม 1,900 available for rent.</p>
+                           ✨ อก 36 นิ้ว เอว 29 นิ้ว สะโพก 37 นิ้ว
+
+                        <p>380 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay28.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เเบรนด์ Chou Chou.jpg" style="height: 36rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Red Dress</h5>
+                        <p>เเบรนด์ Chou Chou เเบรนด์นำเข้าเวียดนาม ราคาเต็ม 1,800+ for rent.</p>
+                            ✨ อก 33 นิ้ว เอว 26 นิ้ว สะโพก 36 นิ้ว
+
+                        <p>350 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay29.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เเบรนด์ sohyna bijou.jpg" style="height: 32rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">White Suit Dress</h5>
+                        <p>เเบรนด์ sohyna bijou เเบรนด์นำเข้าเวียดนาม ราคาเต็ม 2,000</p>
+                           ✨ อก 32 นิ้ว เอว 26 นิ้ว สะโพก 37 นิ้ว
+
+                        <p>400 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay30.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 1px solid black;">
+        <h1 class="p-3">Crops</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\เกาะอกสีขาวของมิกิ.jpg" style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เกาะอกสีขาว</h5>
+                        <p>เสื้อครอปสุดน่ารักมีระบายลูกไม้ อีกทั้งยังมีความเซกซี่อีกด้วย
+                             ✨ อก 27-28 นิ้ว 
+
+                            ราคาเต็ม 690 </p>
+                        <p>150 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay31.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\ครอปไหมพรมสีน้ำตาล.jpg" style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">ครอปไหมพรมสีน้ำตาล</h5>
+                        <p>เหมาะกับเทศกาลและมีสีที่อบอุ่น แมทช์ง่ายได้ทั้งกับกางเกงและกระโปรง
+                             ✨ อก 30-32 นิ้ว 
+                            
+                            ราคาเต็ม 490</p>
+                        <p>120 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay32.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\ครอปไหมพรมมีชมพูโบว์หน้า.jpg" style="height: 34rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">ครอปไหมพรมมีชมพูโบว์หน้า</h5>
+                        <p>มีความน่ารักด้วยสีชมพู ใส่กับแขนยาวไหมพรมใส่รวมกันแล้วน่ารักขึ้นไปอีก
+                            ✨ อก 34-36 นิ้ว 
+
+                            ราคาเต็ม 790 บาท</p>
+                        <p>180 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay33.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 p-3" style="border: 1px solid black;">
+        <h1 class="p-3">Unavailable</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\1.jpg" style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">เดรส Chou Chou </h5>
+                        <p>เเบรนด์ Chou Chou เเบรนด์นำเข้าเวียดนาม ราคาเต็ม 1,500++</p>
+                        ✨ อก 36 นิ้ว เอว 29 นิ้ว สะโพก 37 นิ้ว
+
+                        <p>320 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay34.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กระเป๋าขนปุกปุ้ยสุดคิ้วท์.jpg"style="height: 30rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กระเป๋าขนปุกปุ้ยสุดคิ้วท์</h5>
+                        <p> ลุคลูกคุณหนูสุดๆๆ
+                            ราคาเต็ม 1,500</p>
+                        <p>350 baht/day</p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay35.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img\กางเกงแบรนด์ Carhartt.jpg" style="height: 36rem;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">กางเกงแบรนด์ Carhartt</h5>
+                        <p> ลุควินเทจสุดเซอร์ 
+                            ดีไซน์สุดคลาสสิก ลายสีย้อมแบบเท่ๆ
+                            เนื้อผ้าดี ใส่สบาย เหมาะกับลุคลุยๆ
+                            ใส่แมตช์กับเสื้อยืดหรือแจ็คเก็ตก็ลงตัว
+                            ✨ เอว 40 นิ้ว สะโพก 46 นิ้ว
+                            
+                            💰 ราคาเต็ม 3900++ บาท
+                            </p>
+                        <p>300 baht/day </p>
+                        <button id="star-btn" onclick="toggleStar()" class="btn btn-primary">
+                            ★
+                            </button>
+                        <a href="pay36.html" class="btn btn-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container-fluid p-0">
+          <div class="row text-left">
+            <div class="col-md-5 col-sm-5">
+              <h4 class="text-light">About us</h4>
+              <p class="text-muted">We provide a wide range of rental items to meet your needs. Our mission is to offer high-quality products and excellent customer service.</p>
+              <p class="pt-4 text-muted">Copyright ©2024 All rights reserved | This template is made by
+                <span>Rental Store</span>
+              </p>
+            </div>
+            <div class="col-md-5 col-sm-12">
+              <h4 class="text-light">Newsletter</h4>
+              <p class="text-muted">Stay Updated</p>
+              <form class="form-inline">
+                <div class="col pl-0">
+                  <div class="input-group pr-5">
+                    <input type="text" class="form-control bg-dark text-white" id="inlineFormInputGroupUsername2"
+                      placeholder="Email">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fas fa-arrow-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-2 col-sm-12">
+              <h4 class="text-light">Follow Us</h4>
+              <p class="text-muted">Let us be social</p>
+              <div class="column text-light">
+                <a class="p-3" target="_blank" href="https://www.facebook.com/ansu.pal.125"><i
+                    class="fab fa-2x fa-facebook-f"></i></a>
+                <a class="p-3" target="_blank" href="https://www.instagram.com/ansu_pal.7777/?hl=en"><i
+                    class="fab fa-2x fa-instagram"></i></a>
+                <a class="p-3" target="_blank" href="https://x.com/ansu_pal"><i class="fab fa-2x fa-twitter"></i></a>
+                <a class="p-3" target="_blank" href="https://youtube.com"><i class="fab fa-2x fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+
+</html>

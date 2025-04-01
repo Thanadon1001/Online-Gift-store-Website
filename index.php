@@ -1,11 +1,12 @@
 <?php
+require 'db.php'; // Include the database connection
 session_start();
 ?>
 <!DOCTYPE html>
 <html>
    <head>
-      <title>GiftStore</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <title>StyleSwap</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- FONTS      -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
       <!-- Font Awesome Bootstrap -->
@@ -14,9 +15,9 @@ session_start();
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
       <!-- CSS -->
       <link rel="stylesheet" href="css/go_to.css">
-
+ 
       <link rel="stylesheet" href="css/style1.css">
-
+ 
       <style>
       h3,h5{
         font-weight:bold;
@@ -32,7 +33,7 @@ session_start();
       opacity: 1;
       transform: translate3d(0,0,0);
      }
-    .anime-start-2 {
+     .anime-start-2 {
       opacity: 0;
       transform: translate3d(-100px, 0, 0);
       transition:2.1s;
@@ -67,41 +68,40 @@ session_start();
       <div class="row navbar-fixed">
          <nav class="black">
             <div class="nav-wrapper">
-               <a href="#" class="brand-logo">GiftStore</a>
+               <a href="#" class="brand-logo">StyleSwap</a>
                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                <ul id="categories1" class="dropdown-content" databeloworigin="true"><!--for dropdown contents who has data activates as categories1 on desktop navigation bar-->
-                  <li><a href="category1.php" class="dropdown_link">Kids</a></li>
-                  <li><a href="category2.php" class="dropdown_link">PhoneCase</a></li>
-                  <li><a href="category3.php" class="dropdown_link">Home Decor</a></li>
-                  <li><a href="category4.php" class="dropdown_link">Watches</a></li>
-                  <li><a href="category5.php" class="dropdown_link">Jewellery</a></li>
-                  <li><a href="category6.php" class="dropdown_link">Soft Toys</a></li>
-                  <li><a href="category7.php" class="dropdown_link">Crockery</a></li>
-                  <li><a href="category8.php" class="dropdown_link">Wallet</a></li>
-
+                  <li><a class="dropdown_link">Popular Rental</a></li>
+                  <li><a class="dropdown_link">Bags</a></li>
+                  <li><a class="dropdown_link">Pants</a></li>
+                  <li><a class="dropdown_link">Shirts</a></li>
+                  <li><a class="dropdown_link">Shoes</a></li>
+                  <li><a class="dropdown_link">Accessories</a></li>
+                  <li><a class="dropdown_link">Dresses</a></li>
+                  <li><a class="dropdown_link">Crops</a></li>
+ 
                </ul>
                <ul id="categories2" class="dropdown-content" databeloworigin="true"><!--for dropdown contents who has data activates as categories2 on mobile sidenav-->
-                  <li><a href="category1.php" class="dropdown_link">Kids</a></li>
-                  <li><a href="category2.php" class="dropdown_link">PhoneCase</a></li>
-                  <li><a href="category3.php" class="dropdown_link">Home Decor</a></li>
-                  <li><a href="category4.php" class="dropdown_link">Watches</a></li>
-                  <li><a href="category5.php" class="dropdown_link">Jewellery</a></li>
-                  <li><a href="category6.php" class="dropdown_link">Soft Toys</a></li>
-                  <li><a href="category7.php" class="dropdown_link">Crockery</a></li>
-                  <li><a href="category8.php" class="dropdown_link">Wallet</a></li>
-
+                  <li><a class="dropdown_link">Popular Rental</a></li>
+                  <li><a class="dropdown_link">Bags</a></li>
+                  <li><a class="dropdown_link">Pants</a></li>
+                  <li><a class="dropdown_link">Shirts</a></li>
+                  <li><a class="dropdown_link">Shoes</a></li>
+                  <li><a class="dropdown_link">Accessories</a></li>
+                  <li><a class="dropdown_link">Dresses</a></li>
+                  <li><a class="dropdown_link">Crops</a></li>
+ 
                </ul>
-
+ 
                <ul id="nav-mobile" class="right hide-on-med-and-down"><!--for desktop-->
                 <form action="search.php" method="POST"><!--for search function-->
                   <li><input type="text" name="search" placeholder="search"></li>
                   <?php
-                    if(isset($_SESSION['userid'])){//navigation bar for user who has logged in 
+                    if(isset($_SESSION['userid'])){//navigation bar for user who has logged in
                     ?>
                           <li><a href="index.php" class="navlink">Home</a></li>
                           <li><a href="#" class="dropdown-trigger navlink" data-activates="categories1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-                          <li><a href="aboutus.php" class="navlink">About Us</a></li>
-                          <li><a href="contactus.php" class="navlink">Contact Us</a></li>
+            
                           <li><a class="dropdown-button" data-beloworigin="true" href="#!" data-activates="dropdown2"><?php echo $_SESSION['userid']?><i class="material-icons right">arrow_drop_down</i></a></li>
                           <li><a href="shopping_cart.php" class="navlink"><i class="material-icons">shopping_cart</i></a></li>
                   <ul id="dropdown2" class="dropdown-content dropdown_link">
@@ -113,23 +113,21 @@ session_start();
                   ?>
                   <li><a href="index.php" class="navlink">Home</a></li>
                   <li><a href="#" class="dropdown-trigger navlink" data-activates="categories1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-                  <li><a href="aboutus.php" class="navlink">About Us</a></li>
-                  <li><a href="contactus.php" class="navlink">Contact Us</a></li>
-                  <li><a href="signup.php" class="navlink">Sign Up</a></li>
-                  <li><a href="shopping_cart.php" class="navlink"><i class="material-icons">shopping_cart</i></a></li> 
+        
+                  <li><a href="book.html" class="navlink">Menu</a></li>
+                  <li><a href="shopping_cart.php" class="navlink"><i class="material-icons">shopping_cart</i></a></li>
                   <?php
                       }
-                  ?> 
-                </form> 
+                  ?>
+                </form>
                </ul>
                <ul class="side-nav" id="mobile-demo"><!--for mobiles-->
-                <li><a href="index.php" class="side_logo left-align">GiftStore</a></li>
+                <li><a href="index.php" class="side_logo left-align">StlyeSwap</a></li>
                 <hr>
                 <li><a href="index.php" class="side_nav">Home</a></li>
                 <li><a href="#" class="dropdown-trigger navlink" data-activates="categories2">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a href="aboutus.php" class="side_nav">About Us</a></li>
-                <li><a href="contactus.php" class="side_nav">Contact Us</a></li>
-                <li><a href="signup.php" class="side_nav">SignUp</a></li>
+               
+                <li><a href="book.html" class="side_nav">Menu</a></li>
             </ul>
             </div>
          </nav>
@@ -138,40 +136,42 @@ session_start();
     <div class="slider fullscreen slider_adjust">
         <ul class="slides">
           <li>
-            <img src="images/slideone.jpg"> <!-- random image -->
+            <img src="img/646f35f259ac1008073501.jpg"> <!-- random image -->
             <div class="caption left-align">
-              <h3 class="black-text">Welcome To The GiftStore!</h3>
+              <h3 class="white-text">Welcome To The StlyeSwap!</h3>
               <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
             </div>
           </li>
           <li>
-            <img src="images/slidetwo.jpg"> <!-- random image -->
+            <img src="img/brooks-master-walk-in-albero-grigio-1.jpg"> <!-- random image -->
             <div class="caption right-align">
-              <h3 class="white-text">Get Maximum Opportunities!</h3>
+              <h3 class="black-text"> Get ready to Mix, Match and Shine!</h3>
               <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
             </div>
           </li>
           <li>
-            <img src="images/slidethree.jpg"> <!-- random image -->
+            <img src="img/about_img_1.png"> <!-- random image -->
             <div class="caption right-align">
-              <h3 class="white-text" >Get Quick Delivery!</h3>
+              <h4 class="black-text" >Get Quick Delivery!</h4>
               <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
             </div>
           </li>
         </ul>
       </div>
-
-      
+ 
+     
       <!--About-->
       <div class="about" style="padding-top:500px;">
       <h1>About US</h1>
       <p style="font-size:20px;">
-    This is giftstore. Welcome to our store. Maximum opportunites are offered on our website. Kindly look at our collection and order maximum products from our site.Safe banking and product tracking is also our feature.This is giftstore. Welcome to our store. Maximum opportunites are offered on our website. Kindly look at our collection and order maximum products from our site.Safe banking and product tracking is also our feature.This is giftstore. Welcome to our store. Maximum opportunites are offered on our website. Kindly look at our collection and order maximum products from our site.Safe banking and product tracking is also our feature.This is giftstore. Welcome to our store. Maximum opportunites are offered on our website. Kindly look at our collection and order maximum products from our site.Safe banking and product tracking is also our feature.This is giftstore. Welcome to our store. Maximum opportunites are offered on our website. Kindly look at our collection and order maximum products from our site
+      Welcome to StyleSwap, your go-to destination for fashion rentals. Instead of buying clothes you'll only wear a few times, rent stylish outfits for any occasion at a fraction of the cost. It's a smart, eco friendly way to stay fashionable while reducing waste.
+With secure payments, reliable delivery, and flexible rental periods, dressing up has never been easier. Simply choose, rent, and wear no long-term commitment needed.
+Refresh your wardrobe effortlessly. Start renting now at [StyleSwap Website]!
       </p>
-    
+   
       </div>
       <!--parallax-->
-    
+   
  <!--section-->
   <!--   <section class="container section" id="photo's">
       <div class="row">
@@ -206,15 +206,15 @@ session_start();
     <div class="row" style="margin-left: -1px;">
       <div class="parallax-container" style="height:100%;">
         <div class="row" style="margin-top: 30px">
-          <h4 class="center-align white-text">Cateogories</h4>
+          <h4 class="center-align ฺblack-text">Cateogories</h4>
           <div class="col s12 m12 l3">
             <div class="card anime-start-1" data-as="true"  data-as-animation="anime-end-1"> <!--for onscroll animation-->
               <div class="card-image waves-effect waves-block waves-light">
-                <img  src="images/homedecor/cycle.jpg">
+                <img  src="img/womens-walk-in-closet.png">
               </div>
                 <a href="category3.php">
                 <div class="card-action center-align black white-text flow-text">
-                  Home Decor
+                Popular Rental
                 </div>
               </a>
             </div>
@@ -222,11 +222,11 @@ session_start();
           <div class="col s12 m12 l3">
             <div class="card anime-start-2" data-as="true"  data-as-animation="anime-end-2">
               <div class="card-image waves-effect waves-block waves-light">
-                <img  src="images/phonecase/case2.jpg">
+                <img  src="img/9161060097_833961269.jpg">
               </div>
               <a href="category2.php">
                 <div class="card-action center-align black white-text flow-text">
-                  Phone Case
+                Bags
                 </div>
               </a>
             </div>
@@ -234,11 +234,11 @@ session_start();
           <div class="col s12 m12 l3">
             <div class="card anime-start-3" data-as="true"  data-as-animation="anime-end-3">
               <div class="card-image waves-effect waves-block waves-light">
-                <img  src="images/kids/spinner.jpg">
+                <img  src="img/m_62f6810e4bd7602de1563d22.jpg">
               </div>
               <a href="category1.php">
                 <div class="card-action center-align black white-text flow-text">
-                  Kids
+                Pants
                 </div>
               </a>
             </div>
@@ -246,11 +246,11 @@ session_start();
           <div class="col s12 m12 l3">
             <div class="card anime-start-4" data-as="true"  data-as-animation="anime-end-4">
               <div class="card-image waves-effect waves-block waves-light">
-                <img  src="images/watches/1.jpg">
+                <img  src="img/แจ็คกเกต.jpg">
               </div>
               <a href="category4.php">
                 <div class="card-action center-align black white-text flow-text">
-                  Watches
+                Shirts
                 </div>
               </a>
             </div>
@@ -258,14 +258,15 @@ session_start();
         </div>
         <div class="parallax">
           <img src="images/space.jpg" class="responsive-img">
-
+ 
         </div>
       </div>
     </div>
     <h1> QUICK DELIVERY</h1>
       <p style="font-size:20px;">
-    This is giftstore. Welcome to our store. Maximum opportunites are offered on our website. Kindly look at our collection and order maximum products from our site.Safe banking and product tracking is also our feature.This is giftstore. Welcome to our store. Maximum 
-  </p>
+      Welcome to StyleSwap, your go-to destination for fashion rentals. Instead of buying clothes you'll only wear a few times, rent stylish outfits for any occasion at a fraction of the cost. It's a smart, eco friendly way to stay fashionable while reducing waste.
+With secure payments, reliable delivery, and flexible rental periods, dressing up has never been easier. Simply choose, rent, and wear no long-term commitment needed.
+Refresh your wardrobe effortlessly. Start renting now at [StyleSwap Website]!  </p>
     <!--parallax Container 2-->
     <div class="row" style="margin-left: -1px; margin-top: 20px;">
       <div class="parallax-container" style="height:100%;">
@@ -274,11 +275,11 @@ session_start();
           <div class="col s12 m12 l3">
             <div class="card small anime-start-1" data-as="true"  data-as-animation="anime-end-1" style="opacity: 0.8;">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/softtoys/72.jpg">
+                <img class="activator" src="img/21647801xlalt4.jpg">
               </div>
               <a href="category6.php">
                 <div class="card-action center-align black white-text flow-text">
-                  Soft Toys
+                Shoes
                 </div>
               </a>
             </div>
@@ -286,11 +287,11 @@ session_start();
           <div class="col s12 m12 l3">
             <div class="card small anime-start-2" data-as="true"  data-as-animation="anime-end-2" style="opacity: 0.8;">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/crockery/82.jpg">
+                <img class="activator" src="img/bridal-earrings-feature-1.jpg">
               </div>
               <a href="category7.php">
                 <div class="card-action center-align black white-text flow-text">
-                  Crockery
+                Accessories
                 </div>
               </a>
             </div>
@@ -298,11 +299,11 @@ session_start();
           <div class="col s12 m12 l3">
             <div class="card small anime-start-3" data-as="true"  data-as-animation="anime-end-3" style="opacity: 0.8;">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/jwellary/3.jpg">
+                <img class="activator" src="img/เดรสขาว.jpg">
               </div>
               <a href="#">
                 <div class="card-action center-align black white-text flow-text">
-                  Jewellery
+                Dresses
                 </div>
               </a>
             </div>
@@ -310,11 +311,11 @@ session_start();
           <div class="col s12 m12 l3">
             <div class="card small anime-start-4" data-as="true"  data-as-animation="anime-end-4" style="opacity: 0.8;">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/wallet/107.jpg">
+                <img class="activator" src="img/เกาะอก.jpg">
               </div>
               <a href="#">
                 <div class="card-action center-align black white-text flow-text">
-                  Wallets
+                Crops
                 </div>
               </a>
             </div>
@@ -322,7 +323,7 @@ session_start();
         </div>
         <div class="parallax">
           <img src="images/space.jpg" class="responsive-img">
-
+ 
         </div>
       </div>
     </div>
@@ -331,22 +332,21 @@ session_start();
          <footer class="page-footer black white-text">
             <div class="row center-align">
                 <div class="col s12 m12 l12">
-                  <h4><a href="index.php" class="footerlogo">GiftStore</a></h4>
+                  <h4><a href="index.php" class="footerlogo">StlyeSwap</a></h4>
                   <!-- <p class="white-text">Information will be provided soon.</p> -->
                 </div>
             </div>
             <div class="row center-align">
               <div class="col s12 m12 l12">
-                <a href="#" class="link"> Developed By Sayali Santosh Pawar</a>
+                <a href="#" class="link"> Developed By Pasu</a>
               </div>
             </div>
              <div class="row center-align">
                 <div class="col s12 m12 l12">
-                  <a href="index.php" class="link">Home<span class="white-text"> |</span></a> 
-                  <a href="aboutus.html" class="link">About Us<span class="white-text"> |</span></a> 
-                  <a href="contactus.html" class="link">Contact Us<span class="white-text"> |</span></a> 
+                  <a href="index.php" class="link">Home</a>
+                  
                 </div>
-              </div> 
+              </div>
               <div class="row center-align">
                <div id="social">
                   <a class="facebookBtn smGlobalBtn" href="#!"></a>
@@ -359,25 +359,25 @@ session_start();
                </div>
             </div>
          </footer>
-      </div> 
+      </div>
       <!-- Preloader -->
       <div id="loader-wrapper">
          <div id="loader"></div>
-
+ 
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
-
+ 
       </div>
       <!-- Go To Top -->
       <div id="go-top" style="display: none;">
          <a title="Back to Top" href="#"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
       </div>
  
-    
+   
   </footer>
    </body>
       <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
       <script src="js/jquery.validate.min.js"></script>
       <script src="js/additional-methods.min.js"></script>
       <script src="js/jquery.scrollme.js"></script><!--scroll me jquery plugin-->
@@ -400,36 +400,37 @@ session_start();
             return false;
           });
         });
-
+ 
         //parallax
         $(document).ready(function(){
           $('.parallax').parallax()
         })
-         //Preloader 
+         //Preloader
          $(document).ready(function() {
             $(window).load(function(){
                 setTimeout(function(){
                     $('body').addClass('loaded');
                 }, 1000);
             });
-         }); 
-         //Go Top 
+         });
+         //Go Top
             var pxShow = 100; // height on which the button will show
             var fadeInTime = 400; // how slow/fast you want the button to show
             var fadeOutTime = 400; // how slow/fast you want the button to hide
-
+ 
             // Show or hide the sticky footer button
             jQuery(window).scroll(function() {
-
+ 
                if (jQuery(window).scrollTop() >= pxShow) {
                   jQuery("#go-top").fadeIn(fadeInTime);
                } else {
                   jQuery("#go-top").fadeOut(fadeOutTime);                  
                }
-
+ 
            });
            $(document).ready(function() {
              $('textarea#textarea2').characterCounter();
            });
       </script>
 </html>
+ 
