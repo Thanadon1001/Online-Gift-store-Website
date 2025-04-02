@@ -2,17 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-$dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
-$username = "postgres";
-$password = "postgres";
-
-try {
-    $conn = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-} catch (PDOException $e) {
-    error_log("Connection failed: " . $e->getMessage());
-    die("Connection failed: " . $e->getMessage());
-}
+require_once 'connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {

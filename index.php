@@ -182,39 +182,7 @@ session_start();
         Refresh your wardrobe effortlessly. Start renting now at [StyleSwap Website]!
     </p>
 </div>
-      <!--parallax-->
-   
- <!--section-->
-  <!--   <section class="container section" id="photo's">
-      <div class="row">
-        <div class="col s12 l4">
-          <img src="images/space.jpg" class="responsive-img">
-        </div>
-        <div class="col s12 l6">
-          <h3 class="pink-text text-accent-3">Amazing Gifts</h3>
-          <p> escription goes here!!</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 l4">
-          <img src="images/space.jpg" class="responsive-img">
-        </div>
-        <div class="col s12 l6">
-          <h3 class="pink-text text-accent-3">Amazing Gifts</h3>
-          <p>Description goes here!!</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 l4">
-          <img src="images/space.jpg" class="responsive-img">
-        </div>
-        <div class="col s12 l6">
-          <h3 class="pink-text text-accent-3">Amazing Gifts</h3>
-          <p>Description goes here!!</p>
-        </div>
-      </div>
-    </section> -->
-    <!--parallax-->
+    
     <div class="row" style="margin-left: -1px;">
       <div class="parallax-container" style="height:100%;">
         <div class="row" style="margin-top: 30px">

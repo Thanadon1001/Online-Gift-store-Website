@@ -1,15 +1,6 @@
 <?php
 session_start();
-
-$dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
-$username = "postgres";
-$password = "postgres";
-
-try {
-    $conn = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
+require_once 'connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -60,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "An error occurred during login";
     }
 }
-?> <!-- Close PHP tag here -->
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
