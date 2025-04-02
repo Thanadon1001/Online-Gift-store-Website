@@ -4,9 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // ตั้งค่าการเชื่อมต่อฐานข้อมูล
-$dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
-$username = "postgres";
-$password = "postgres";
+require_once 'connect.php';
 
 // เพิ่ม debugging
 error_log("Session user_id: " . ($_SESSION['user_id'] ?? 'not set'));
