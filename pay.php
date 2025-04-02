@@ -1,32 +1,72 @@
 <?php
+session_start();
+
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Database connection configuration
 $dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
 $username = "postgres";
 $password = "postgres";
 
 try {
-    $conn = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    
-    // Get product ID from URL
-    $goods_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-    
+    // Create connection with detailed error handling
+    $conn = new PDO($dsn, $username, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
+
+    // Test connection and log version
+    $version = $conn->query("SELECT version()")->fetchColumn();
+    error_log("Connected to PostgreSQL: " . $version);
+
+    // Check if goods table exists
+    $tableExists = $conn->query("
+        SELECT EXISTS (
+            SELECT 1 
+            FROM pg_tables 
+            WHERE schemaname = 'public' 
+            AND tablename = 'goods'
+        )
+    ")->fetchColumn();
+
+    if (!$tableExists) {
+        throw new Exception("Table 'goods' does not exist");
+    }
+
+    // Get and validate product ID
+    $goods_id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    if (!$goods_id) {
+        throw new Exception("Invalid product ID");
+    }
+
+    // Debug log
+    error_log("Querying product ID: " . $goods_id);
+
     // Fetch product details
     $stmt = $conn->prepare("
-        SELECT goods_name, price_1_day, price_3_day, price_7_day 
-        FROM goods 
-        WHERE goods_id = ? AND availability_status = true
+        SELECT * FROM goods WHERE goods_id = ?
     ");
     $stmt->execute([$goods_id]);
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+    $product = $stmt->fetch();
+
     if (!$product) {
-        die('<div class="alert alert-danger">Product not available or not found</div>');
+        throw new Exception("Product not found");
     }
-    
-} catch(PDOException $e) {
-    error_log($e->getMessage());
-    die('<div class="alert alert-danger">Sorry, a database error occurred</div>');
+
+    // Debug log
+    error_log("Found product: " . json_encode($product));
+
+} catch (PDOException $e) {
+    error_log("Database error: " . $e->getMessage());
+    die('<div class="alert alert-danger">Database connection failed. Error: ' . htmlspecialchars($e->getMessage()) . '</div>');
+} catch (Exception $e) {
+    error_log("Application error: " . $e->getMessage());
+    die('<div class="alert alert-danger">' . htmlspecialchars($e->getMessage()) . '</div>');
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -292,22 +332,18 @@ try {
             <i class="fas fa-lock"></i> Complete Payment
         </button>
     </div>
-
     <script>
-    // ...existing JavaScript code...
-    </script>
-</body>
-</html>
-<script>
 let selectedPrice = 0;
 let selectedPackage = null;
 let selectedPayment = null;
+let selectedDays = 0;  // เพิ่มบรรทัดนี้
 const shippingFee = 50;
 const productId = <?php echo $goods_id; ?>;
 
 function selectPackage(days, price, element) {
-    // Update selected price
+    // Update selected price and days
     selectedPrice = parseFloat(price);
+    selectedDays = days;  // เพิ่มบรรทัดนี้
     
     // Update total price display with shipping fee
     const totalPrice = selectedPrice + shippingFee;
@@ -335,16 +371,60 @@ function togglePayment(method, element) {
 }
 
 function goToThankYou() {
-    if (!selectedPackage) {
-        alert("Please select a rental package before proceeding");
+    // Validation checks
+    if (!selectedPackage || !selectedDays) {
+        alert("กรุณาเลือกแพ็คเกจระยะเวลาเช่า");
         return;
     }
     if (!selectedPayment) {
-        alert("Please select a payment method before proceeding");
+        alert("กรุณาเลือกวิธีการชำระเงิน");
         return;
     }
-    
-    // Redirect to thank you page with product ID and selected package info
-    window.location.href = `type.html?id=${productId}&price=${selectedPrice}&shipping=${shippingFee}`;
+
+    // Debug log before sending
+    console.log('Current values:', {
+        productId,
+        selectedDays,
+        selectedPrice,
+        shippingFee,
+        totalAmount: selectedPrice + shippingFee
+    });
+
+    // Create FormData with all required fields
+    const formData = new FormData();
+    formData.append('goods_id', productId);
+    formData.append('duration_days', selectedDays);
+    formData.append('total_amount', selectedPrice + shippingFee);
+
+    // Send request
+    fetch('save_rental.php', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include'
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+            return response.text().then(text => {
+                console.error('Server response:', text);
+                throw new Error('Server error: ' + text);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        if (data.success) {
+            window.location.href = `thank_you.php?rental_id=${data.rental_id}&price=${selectedPrice}&shipping=${shippingFee}`;
+        } else {
+            throw new Error(data.message || 'เกิดข้อผิดพลาดในการบันทึกข้อมูล');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert(error.message);
+    });
 }
 </script>
+</body>
+</html>

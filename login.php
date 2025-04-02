@@ -17,27 +17,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Check user credentials
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt = $conn->prepare("SELECT user_id, username, password FROM users WHERE username = ?");
         $stmt->execute([$username]);
         
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($password, $user['password'])) {
-                // Login successful
+                // Clear any existing session data
+                session_unset();
+                
+                // Set session variables
+                $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
-                header("Location: thankyou.php");
+                
+                // Debug logging
+                error_log("Setting session data - User ID: " . $user['user_id']);
+                error_log("Current session data: " . print_r($_SESSION, true));
+                
+                // Ensure session is written
+                session_write_close();
+                
+                // Start new session for next request
+                session_start();
+                
+                // Verify session was saved
+                error_log("Verifying session data: " . print_r($_SESSION, true));
+                
+                // Make sure there's no output before redirect
+                if (ob_get_length()) ob_clean();
+                
+                // Redirect to book.php
+                header("Location: book.php");
                 exit();
             } else {
-                $error = "รหัสผ่านไม่ถูกต้อง";
+                $error = "Incorrect password";
             }
         } else {
-            $error = "ไม่พบชื่อผู้ใช้";
+            $error = "Username not found";
         }
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        error_log("Login error: " . $e->getMessage());
+        $error = "An error occurred during login";
     }
 }
-?>
+?> <!-- Close PHP tag here -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>StyleSwap - Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
+   <style>
     * {
         margin: 0;
         padding: 0;

@@ -60,6 +60,20 @@ session_start();
       opacity: 1;
       transform: translate3d(0,0,0);
     }
+  
+
+    .about {
+        margin-top: 100vh; /* เพิ่มระยะห่างจากส่วนบน */
+        padding: 60px 20px;
+        background: #fff;
+    }
+
+    .about p {
+        max-width: 1200px;
+        margin: 0 auto;
+        line-height: 1.8;
+        text-align: justify;
+    }
       </style>
    </head>
    
@@ -114,7 +128,7 @@ session_start();
                   <li><a href="index.php" class="navlink">Home</a></li>
                   <li><a href="#" class="dropdown-trigger navlink" data-activates="categories1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
         
-                  <li><a href="book.php" class="navlink">Menu</a></li>
+                  <li><a href="type.html" class="navlink">Login</a></li>
                   <li><a href="shopping_cart.php" class="navlink"><i class="material-icons">shopping_cart</i></a></li>
                   <?php
                       }
@@ -127,7 +141,7 @@ session_start();
                 <li><a href="index.php" class="side_nav">Home</a></li>
                 <li><a href="#" class="dropdown-trigger navlink" data-activates="categories2">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
                
-                <li><a href="book.php" class="side_nav">Menu</a></li>
+                <li><a href="type.html" class="side_nav">Login</a></li>
             </ul>
             </div>
          </nav>
@@ -161,14 +175,13 @@ session_start();
  
      
       <!--About-->
-      <div class="about" style="padding-top:500px;">
-      <p style="font-size:20px;">
-      Welcome to StyleSwap, your go-to destination for fashion rentals. Instead of buying clothes you'll only wear a few times, rent stylish outfits for any occasion at a fraction of the cost. It's a smart, eco friendly way to stay fashionable while reducing waste.
-With secure payments, reliable delivery, and flexible rental periods, dressing up has never been easier. Simply choose, rent, and wear no long-term commitment needed.
-Refresh your wardrobe effortlessly. Start renting now at [StyleSwap Website]!
-      </p>
-   
-      </div>
+      <div class="about">
+    <p style="font-size:20px;">
+        Welcome to StyleSwap, your go-to destination for fashion rentals. Instead of buying clothes you'll only wear a few times, rent stylish outfits for any occasion at a fraction of the cost. It's a smart, eco friendly way to stay fashionable while reducing waste.
+        With secure payments, reliable delivery, and flexible rental periods, dressing up has never been easier. Simply choose, rent, and wear no long-term commitment needed.
+        Refresh your wardrobe effortlessly. Start renting now at [StyleSwap Website]!
+    </p>
+</div>
       <!--parallax-->
    
  <!--section-->

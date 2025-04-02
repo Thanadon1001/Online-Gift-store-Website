@@ -1,43 +1,77 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
 $username = "postgres";
 $password = "postgres";
 
-// Create database connection
 try {
     $conn = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 } catch (PDOException $e) {
+    error_log("Connection failed: " . $e->getMessage());
     die("Connection failed: " . $e->getMessage());
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
-        // Get form data
-        $username = $_POST['fullname'];  // Using fullname as username
+        // Get form data with validation
+        $username = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
-        $zipcode = $_POST['zipcode'];
+        $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
+        $zipcode = filter_input(INPUT_POST, 'zipcode', FILTER_SANITIZE_STRING);
 
-        // Prepare SQL statement to match table structure
+        // Validate required fields
+        if (!$username || !$password || !$address || !$phone || !$zipcode) {
+            throw new Exception("All fields are required");
+        }
+
+        // Check if username exists
+        $check_stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
+        $check_stmt->execute([$username]);
+        $count = $check_stmt->fetchColumn();
+
+        if ($count > 0) {
+            throw new Exception("This username is already taken. Please choose another one.");
+        }
+
+        // Insert new user
         $stmt = $conn->prepare("
             INSERT INTO users (username, password, address, phone, zipcode) 
             VALUES (?, ?, ?, ?, ?)
+            RETURNING user_id, username
         ");
-
-        // Execute with parameters
+            
         $stmt->execute([$username, $password, $address, $phone, $zipcode]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Redirect to thank you page
-        header("Location: thank_you.php");
+        if (!$user) {
+            throw new Exception("Failed to create user account");
+        }
+
+        // Set session variables
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['username'] = $user['username'];
+
+        // Debug log
+        error_log("User registered successfully: " . json_encode($user));
+
+        // Redirect to book page
+        header("Location: book.php");
         exit();
 
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        error_log("Database error: " . $e->getMessage());
+        $error = "Database error occurred. Please try again later.";
+    } catch (Exception $e) {
+        error_log("Error: " . $e->getMessage());
+        $error = $e->getMessage();
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -216,13 +250,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             grid-template-columns: 1fr;
         }
     }
+    .error-message {
+            background: #fff3f3;
+            color: #e74c3c;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid #ffd1d1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <div class="card">
             <h2 class="card-title">Create Your Account</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            
+            <?php if (isset($error)): ?>
+                <div class="error-message">
+                    <i class="material-icons">error_outline</i>
+                    <?php echo htmlspecialchars($error); ?>
+                </div>
+            <?php endif; ?>
+            <!-- เพิ่มตรงนี้ -->
+            <form method="post">
                 <div class="input-field">
                     <input id="fullname" name="fullname" type="text" required>
                     <i class="material-icons">account_circle</i>

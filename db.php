@@ -10,7 +10,7 @@ try {
     $sql_users = "
         CREATE TABLE IF NOT EXISTS users (
             user_id SERIAL PRIMARY KEY,
-            username VARCHAR(100) NOT NULL,
+            username VARCHAR(100) UNIQUE NOT NULL,
             address TEXT NOT NULL,
             phone VARCHAR(20),          -- Added phone column
             zipcode VARCHAR(10),        -- Added zipcode column
@@ -69,7 +69,6 @@ try {
     $conn->exec($sql_goods);
     $conn->exec($sql_rentals);  // Removed $sql_pricing since it's merged with goods
 
-    echo "Database tables created/updated successfully";
 
     // Execute the table creation queries
     $conn->exec($sql_users);
@@ -77,7 +76,7 @@ try {
     $conn->exec($sql_goods);
     $conn->exec($sql_rentals);
 
-    echo "Database tables created/updated successfully";
+
 
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
