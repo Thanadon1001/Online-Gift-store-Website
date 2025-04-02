@@ -6,9 +6,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database connection configuration
-$dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
-$username = "postgres";
-$password = "postgres";
+require_once 'connect.php';
 
 try {
     // Create connection with detailed error handling

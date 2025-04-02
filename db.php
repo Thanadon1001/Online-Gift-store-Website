@@ -1,7 +1,5 @@
 <?php
-$dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
-$username = "postgres";
-$password = "postgres";
+require 'connect.php';
 
 try {
     $conn = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);

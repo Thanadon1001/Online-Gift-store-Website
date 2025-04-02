@@ -16,9 +16,7 @@ if (!isset($_SESSION['user_id'])) {
         exit;
     }
 }
-$dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
-$username = "postgres";
-$password = "postgres";
+require_once 'connect.php';
 
 try {
     // Create PDO connection

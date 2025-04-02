@@ -136,7 +136,7 @@ session_start();
                 </form>
                </ul>
                <ul class="side-nav" id="mobile-demo"><!--for mobiles-->
-                <li><a href="index.php" class="side_logo left-align">StlyeSwap</a></li>
+                <li><a href="index.php" class="side_logo left-align">StyleSwap</a></li>
                 <hr>
                 <li><a href="index.php" class="side_nav">Home</a></li>
                 <li><a href="#" class="dropdown-trigger navlink" data-activates="categories2">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -152,7 +152,7 @@ session_start();
           <li>
             <img src="img/646f35f259ac1008073501.jpg"> <!-- random image -->
             <div class="caption left-align">
-              <h3 class="white-text">Welcome To The StlyeSwap!</h3>
+              <h3 class="white-text">Welcome To The StyleSwap!</h3>
               <!-- <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
             </div>
           </li>

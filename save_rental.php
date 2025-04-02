@@ -7,10 +7,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 try {
-    $dsn = "pgsql:host=localhost;port=5432;dbname=postgres";
-    $username = "postgres";
-    $password = "postgres";
-    
+    require_once 'connect.php';
     $conn = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     
     // Check if user is logged in and get user details
